@@ -11,7 +11,7 @@ import br.edu.faculdadealfa.projectfolhaofi.model.repository.FuncionarioReposito
 // quando faz a anotação controlller, ele vai importar o controller do pacote spring e dizer que ela quem vai fazer
 // o controle entre a visao e os models
 
-@RestControler
+@RestController
 
 //determina um nome para o end pointi
 @RequestMapping("funcionario")

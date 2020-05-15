@@ -1,5 +1,5 @@
 package br.edu.faculdadealfa.projectfolhaofi.controller;
 
-public @interface RestControler {
+public @interface RestController {
 
 }

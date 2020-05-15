@@ -1,4 +1,4 @@
-package br.edu.faculdadealfa.projectfolhaofi.model.telas;
+package br.edu.faculdadealfa.projectfolhaofi.telas;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,43 +17,55 @@ public class Principal {
 
 		do {
 
-			System.out.println(" _____________ OPCOES ______________");
-			System.out.println("| 1   Funcionario                   |");
-			System.out.println("| 2   Folha de pagamento            |");
-			System.out.println("| 3   SAIR                          |");
-			System.out.println("|___________________________________|");
+			System.out.println(" __________ OPCOES __________");
+			System.out.println("| 1   Funcionario            |");
+			System.out.println("| 2   Folha de pagamento     |");
+			System.out.println("| 3   SAIR                   |");
+			System.out.println("|____________________________|");
 			
 			opcao = read.nextInt();
 
 			switch (opcao) {
-			case 1:// cadastro funcion�rio
+			case 1:// cadastro funcionario
 
 				System.out.println("1. Cadastrar Funcionario");
 				System.out.println("2. Listar Funcionarios");
 				
 				opcao = read.nextInt();		
 				
-				if (opcao == 1) {
-					contId++;
-					Funcionario funcionario = controle.salvar(CadastroFuncionario.cadastrar(read));
+				switch (opcao) {
+				case 1:
+					// contId++;
+					Funcionario func = controle.salvar(CadastroFuncionario.cadastrar(read));
+					
+					System.out.println("Funcionario " + func.getNome() + " cadastrado com sucesso." + "No cargo de " + func.getCargo() 
+					+ ", com salario de R$" + func.getSalarioBase());
+					
+					break;
 				
-				} else if (opcao ==2 ) { //listar funcionarios
-					for (int i = 0; i < contId; i++) {
-						Funcionario func =  funcionarios.get(i);
-						System.out.println(func.getNome());
-						System.out.println(func.getCargo());
-						System.out.println(func.getSalarioBase());
-						System.out.println("");
-					}
+				case 2: //listar funcionarios
+					System.out.println("Funcionarios cadastrados:");
+					
+					 for (int i = 0; i < contId; i++) {
+				     Funcionario funcionario =  funcionarios.get(i);
+					 System.out.println(funcionario.getNome());
+			         System.out.println(funcionario.getCargo());
+					 System.out.println(funcionario.getSalarioBase());
+					 System.out.println("");
+					 }
+					
+					// controle.listar();
+					break;
 				}
+				
 				break;
 
 			case 2: // calculo folha		
 				EmissaoHolerite.emitirHolerite(funcionarios, read).forEach(holerite->{ //est�tico - chama sem instanciar ( = new ) / foreach - m�todo de lista
 					System.out.println("------------" + holerite.getTipoFolha() + "------------");
-					System.out.println("Funcion�rio " + holerite.getFuncionario().getNome());
-					System.out.println("Sal�rio R$"+ holerite.getFuncionario().getSalarioBase());
-					System.out.println("Compet�ncia: m�s " + holerite.getCompetencia());
+					System.out.println("Funcionario " + holerite.getFuncionario().getNome());
+					System.out.println("Salario R$"+ holerite.getFuncionario().getSalarioBase());
+					System.out.println("Competencia: mes " + holerite.getCompetencia());
 					holerite.getEventos().forEach(evento->{ //puxa a lista de eventos, para cada evento, adiciona uma linha
 						System.out.println(evento.toString());
 						
@@ -70,11 +82,11 @@ public class Principal {
 				
 				break;
 			case 3: // sair
-				System.out.println("Aplica��o encerrada.");
+				System.out.println("Aplicacao encerrada.");
 				break;
 				
 			default:
-				System.out.println("Op��o inv�lida");
+				System.out.println("Opcao invalida");
 				break;
 			}
 		} while (opcao != 3);

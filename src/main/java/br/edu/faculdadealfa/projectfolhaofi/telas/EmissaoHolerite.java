@@ -1,4 +1,4 @@
-package br.edu.faculdadealfa.projectfolhaofi.model.telas;
+package br.edu.faculdadealfa.projectfolhaofi.telas;
 
 import java.util.List;
 import java.util.Scanner;

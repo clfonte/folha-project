@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.edu.faculdadealfa.projectfolhaofi.controller.Autowired;
 import br.edu.faculdadealfa.projectfolhaofi.controller.FuncionarioController;
-import br.edu.faculdadealfa.projectfolhaofi.model.telas.Principal;
+import br.edu.faculdadealfa.projectfolhaofi.telas.Principal;
 
 @SpringBootApplication
 public class ProjectFolhaOfiApplication implements CommandLineRunner{

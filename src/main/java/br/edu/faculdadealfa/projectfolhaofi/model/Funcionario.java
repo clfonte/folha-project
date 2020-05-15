@@ -42,10 +42,13 @@ public class Funcionario {
 	// mappedBy nome do campo que esta sendo mapeado
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionario")
 	private List<Endereco> endereco;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionario")
+	private List<Holerite> holerites;
 
 	// dois construtores para nao precisar inserir infos
 	public Funcionario() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Funcionario(Long id) {
@@ -88,8 +91,8 @@ public class Funcionario {
 		return CPF;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCPF(String CPF) {
+		this.CPF = CPF;
 	}
 
 	public List<Endereco> getEndereco() {
