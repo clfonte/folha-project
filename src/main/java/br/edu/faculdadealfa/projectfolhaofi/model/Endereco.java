@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Endereco {
+public class Endereco extends TemplateTable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +18,7 @@ public class Endereco {
 	// vai montar para onde vai mandar no db
 	@Column(name = "DESCRICAO_ENDERECO")
 	private String logradouro;
+	
 	private Integer numero;
 	private String cep;
 

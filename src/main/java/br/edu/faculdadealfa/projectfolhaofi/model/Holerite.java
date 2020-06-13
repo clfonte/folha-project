@@ -15,7 +15,7 @@ import br.edu.faculdadealfa.projectfolhaofi.model.Enuns.TipoEvento;
 import br.edu.faculdadealfa.projectfolhaofi.model.Enuns.TipoFolha;
 
 @Entity
-public class Holerite {
+public class Holerite extends TemplateTable  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

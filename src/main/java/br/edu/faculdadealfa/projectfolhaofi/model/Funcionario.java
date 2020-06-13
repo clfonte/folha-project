@@ -1,8 +1,10 @@
 package br.edu.faculdadealfa.projectfolhaofi.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,43 +14,54 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.br.CPF;
 
-// Faz mapear a classe para que indique que tem que ao iniciair tabela func
+import br.edu.faculdadealfa.projectfolhaofi.controller.dto.FuncionarioDto;
+
 @Entity
-public class Funcionario {
+public class Funcionario extends TemplateTable {
 
 	@Id
-	// Gera o id da tabela com AI
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "Informe o nome.")
-	@Length(min = 4, max = 60)
+	@NotBlank(message = "Informe o nome")
+	@Length(min = 4, max = 100)
 	private String nome;
 
-	@CPF(message = "Informe um CPF valido.")
-	private String CPF;
+	@Column(name = "DS_CPF")
+	private String cpf;
 
-	// validar
-	@NotNull(message = "Informe o salario.")
+	@NotNull(message = "Informe o salario")
 	private Double salarioBase;
 
-	@NotBlank(message = "Informe o cargo")
-	private String cargo;
-
-	// quando apagar o funcionario ele vai apagar todos endereços relacionados a ele
-	// para nao ter coisa sobrando no db
-	// mappedBy nome do campo que esta sendo mapeado
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionario")
-	private List<Endereco> endereco;
-	
+	// vem da classe endereço
+	// se excluir o funcionario apaga os enderecos relacionados
+	// cria uma lista de enderecos para o funcionario
+	private List<Endereco> enderecos;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionario")
 	private List<Holerite> holerites;
 
-	// dois construtores para nao precisar inserir infos
+	private String cargo;
+
+	// dois construtores para nao precisar inserir as infos
 	public Funcionario() {
-		
+
+	}
+
+	public Funcionario(FuncionarioDto dto) {
+		this.nome = dto.getNome();
+		this.cpf = dto.getCpf();
+		this.salarioBase = dto.getSalario();
+
+		this.setCodigoUsuario(dto.getCodigoUsuario());
+		this.setDataAlteracao(LocalDateTime.now());
+	}
+
+	public Funcionario(String nome, String string, Double salarioBase) {
+		this.nome = nome;
+		this.salarioBase = salarioBase;
 	}
 
 	public Funcionario(Long id) {
@@ -87,21 +100,28 @@ public class Funcionario {
 		this.cargo = cargo;
 	}
 
-	public String getCPF() {
-		return CPF;
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setCPF(String CPF) {
-		this.CPF = CPF;
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
-	
+
+	public List<Holerite> getHolerites() {
+		return holerites;
+	}
+
+	public void setHolerites(List<Holerite> holerites) {
+		this.holerites = holerites;
+	}
 
 }

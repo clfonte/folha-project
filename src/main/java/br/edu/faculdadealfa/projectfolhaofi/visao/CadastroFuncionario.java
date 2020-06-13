@@ -1,4 +1,4 @@
-package br.edu.faculdadealfa.projectfolhaofi.telas;
+package br.edu.faculdadealfa.projectfolhaofi.visao;
 
 import java.util.Scanner;
 
@@ -14,8 +14,8 @@ public class CadastroFuncionario {
 		System.out.println("Digite o nome do funcionario: ");
 		funcionario.setNome(read.next());
 		
-		System.out.println("Informe o cargo de " + funcionario.getNome() + ": ");
-		funcionario.setCargo(read.next());
+		// System.out.println("Informe o cargo de " + funcionario.getNome() + ": ");
+		// funcionario.setCargo(read.next());
 		
 
 		System.out.println("Digite o salario de " + funcionario.getNome() + ": ");

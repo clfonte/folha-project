@@ -11,7 +11,7 @@ import br.edu.faculdadealfa.projectfolhaofi.model.Enuns.TipoEvento;
 
 @Entity
 
-public class Evento {
+public class Evento extends TemplateTable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

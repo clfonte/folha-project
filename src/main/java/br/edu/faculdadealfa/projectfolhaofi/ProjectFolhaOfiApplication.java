@@ -1,12 +1,12 @@
 package br.edu.faculdadealfa.projectfolhaofi;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.edu.faculdadealfa.projectfolhaofi.controller.Autowired;
 import br.edu.faculdadealfa.projectfolhaofi.controller.FuncionarioController;
-import br.edu.faculdadealfa.projectfolhaofi.telas.Principal;
+import br.edu.faculdadealfa.projectfolhaofi.visao.Principal;
 
 @SpringBootApplication
 public class ProjectFolhaOfiApplication implements CommandLineRunner{
