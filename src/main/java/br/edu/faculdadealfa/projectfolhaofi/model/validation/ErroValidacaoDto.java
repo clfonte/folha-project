@@ -5,16 +5,16 @@ public class ErroValidacaoDto {
 	private String campo;
 	private String erro;
 
-	public ErroValidacaoDto(String nome, String erro) {
+	public ErroValidacaoDto(String campo, String erro) {
 		this.campo = campo;
 		this.erro = erro;
 	}
 
-	public void setCampo(String campo) {
-		this.campo = campo;
+	public String getCampo() {
+		return campo;
 	}
 
-	public void setErro(String erro) {
-		this.erro = erro;
+	public String getErro() {
+		return erro;
 	}
 }

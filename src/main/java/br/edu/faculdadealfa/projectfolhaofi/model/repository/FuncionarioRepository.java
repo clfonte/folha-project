@@ -18,6 +18,6 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> 
 
 	List<Funcionario> findByNome(String nome);
 
-	Funcionario findByCPF(String cpf);
+	Funcionario findByCpf(String cpf);
 
 }
